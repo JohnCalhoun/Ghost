@@ -45,7 +45,6 @@ ghostRender<T,S>::Size ghostRender<T,S>::blockJulia(const ghostRender<T,S>::Size
 
 	int_it_dev points_begin	=points_dev.begin();
 	int_it_dev points_end	=points_begin+block;
-	printf("offset=%d",offset);	
 	thrust::sequence(	thrust::device,
 					points_begin,
 					points_end,

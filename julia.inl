@@ -37,8 +37,8 @@ __both__ Complex<T> JuliaBase<T,S>::op(const Complex<T>& z)const{
 };
 template<typename T, typename S>
 __both__ Complex<T> JuliaBase<T,S>::IDtoComplex(const S id)const{
-	T scaleReal=realRange/T(pixels);
-	T scaleImag=imagRange/T(pixels);
+	T scaleReal=realRange/T(width);
+	T scaleImag=imagRange/T(height);
 	
 	T real=(id%width)*scaleReal;
 	T imag=(id/width)*scaleImag; 
@@ -50,11 +50,17 @@ __both__ Complex<T> JuliaBase<T,S>::IDtoComplex(const S id)const{
 };
 template<typename T, typename S>
 __both__ bool JuliaBase<T,S>::escape(const Complex<T>& z)const{
+	z.print();
+	printf("break");
 	complex tmp=z; 
+	tmp.print(); 
+
 	for(int i=0; i<iterations;i++){
+		printf("loop ");
+		tmp.print(); 
 		tmp=op(tmp);
 	}
-	return tmp.abs()>_escape; 
+	return tmp.abs()<_escape; 
 };
 
 template<typename T, typename S>
