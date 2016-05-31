@@ -3,8 +3,8 @@
 
 #include"complex.h"
 #include"julia.h"
+#include "qdbmp.h"
 
-#include<qdbmp/qdbmp.h>
 #include<thrust/device_vector.h>
 #include<thrust/host_vector.h>
 #include<thrust/execution_policy.h>

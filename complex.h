@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <cuda.h>
+#include <iostream>
 
 #define __both__ __device__ __host__
 
@@ -16,8 +17,7 @@ namespace ghost{
 		public:
 		__both__ Complex(T r,T i):real(r),imag(i){};
 		__both__ Complex():real(0),imag(0){};
-
-
+		
 		__both__ T Real()const{return real;};
 		__both__ T Imag()const{return imag;};
 		__both__ void Real(T r){real=r;};
@@ -26,7 +26,12 @@ namespace ghost{
 		__both__ Complex operator+(const Complex&)const;
 		__both__ Complex operator*(const Complex&)const;
 		__both__ Complex operator-(const Complex&)const;
+		__both__ Complex operator/(const Complex&)const;
+		__host__ std::ostream& operator<<(std::ostream&)const;  
+
 		__both__ T abs()const;
+
+		__both__ void print()const;
 	};
 	#include"complex.inl"
 };//end namespace julia
